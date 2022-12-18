@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text} from 'react-native';
 //Styling
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
@@ -9,6 +10,8 @@ export const DashboardScreen: React.FC = () => {
   return (
     <LayoutDefault
       scrollViewBackground={theme.colors.pale}
-      statusBarBackground={theme.colors.primary}></LayoutDefault>
+      statusBarBackground={theme.colors.primary}>
+      <Text>Dashboard</Text>
+    </LayoutDefault>
   );
 };

@@ -5,6 +5,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LandingScreen} from '../screens/landing/LandingScreen';
 //Types
 import {LandingStackParamList} from '../types/types';
+//Navigation
+import {RootNavigator} from './RootNavigator';
 
 const RootStack = createNativeStackNavigator<LandingStackParamList>();
 
@@ -14,6 +16,11 @@ export const LandingNavigator = () => {
       <RootStack.Screen
         name="Login"
         component={LandingScreen}
+        options={{headerShown: false}}
+      />
+      <RootStack.Screen
+        name="Root"
+        component={RootNavigator}
         options={{headerShown: false}}
       />
     </RootStack.Navigator>
