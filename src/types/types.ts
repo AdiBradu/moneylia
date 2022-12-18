@@ -44,7 +44,12 @@ interface IconProps {
   color?: string;
 }
 
+interface NavigationHeaderProps {
+  background?: string;
+}
+
 export type {
+  NavigationHeaderProps,
   IconProps,
   TabBarIconProps,
   StyledLabelProps,

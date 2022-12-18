@@ -16,7 +16,7 @@ const StyledView = styled(View)<LayoutDefaultProps>`
   display: flex;
   height: ${metrics.screenHeight}px;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;
 
