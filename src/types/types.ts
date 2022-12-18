@@ -22,7 +22,13 @@ type RootStackParamList = {
   Profile: any;
 };
 
+interface ButtonDefaultProps {
+  text: string;
+  onPress: () => void;
+}
+
 export type {
+  ButtonDefaultProps,
   LayoutDefaultProps,
   ScrollViewProps,
   LandingStackParamList,
