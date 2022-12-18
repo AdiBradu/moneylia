@@ -18,7 +18,7 @@ type LandingStackParamList = {
 type RootStackParamList = {
   Dashboard: any;
   Extract: any;
-  Pagopa: any;
+  PagoPA: any;
   Profile: any;
 };
 
@@ -27,7 +27,28 @@ interface ButtonDefaultProps {
   onPress: () => void;
 }
 
+interface StyledBarProps {
+  isFocused: boolean;
+}
+
+interface StyledLabelProps {
+  isFocused: boolean;
+}
+
+interface TabBarIconProps {
+  color?: string;
+  route?: string;
+}
+
+interface IconProps {
+  color?: string;
+}
+
 export type {
+  IconProps,
+  TabBarIconProps,
+  StyledLabelProps,
+  StyledBarProps,
   ButtonDefaultProps,
   LayoutDefaultProps,
   ScrollViewProps,
