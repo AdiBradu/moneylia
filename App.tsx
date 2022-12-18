@@ -1,8 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
 import {useEffect} from 'react';
 //Splashscreen
 import SplashScreen from 'react-native-splash-screen';
+//Styling
+import {ThemeProvider} from 'styled-components';
+import {theme} from './src/styles/theme';
+//Navigation
+import {NavigationContainer} from '@react-navigation/native';
+import {LandingNavigator} from './src//navigation/LandingNavigator';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -11,7 +16,13 @@ const App: React.FC = () => {
     }, 2000);
   }, []);
 
-  return <View></View>;
+  return (
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <LandingNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
+  );
 };
 
 export default App;
