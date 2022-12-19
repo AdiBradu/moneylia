@@ -10,6 +10,7 @@ import {MoneyliaLogomark} from '../../assets/icons/MoneyliaLogomark';
 import {NavigationHeaderProps} from '../../types/types';
 
 const StyledView = styled(View)<NavigationHeaderProps>`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: row;

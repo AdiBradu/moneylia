@@ -57,8 +57,6 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
-        console.log(options);
-
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -99,7 +97,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({
             onLongPress={onLongPress}>
             <StyledBar isFocused={isFocused} />
             <TabBarIcon
-              color={isFocused ? theme.colors.primary : theme.colors.copy}
+              color={isFocused ? theme.colors.primary : theme.colors.lightGrey}
               route={route.name}
             />
             <StyledText isFocused={isFocused}>{label}</StyledText>

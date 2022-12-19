@@ -1,5 +1,4 @@
 import React from 'react';
-import {useEffect} from 'react';
 import {SafeAreaView, StatusBar, View, ScrollView} from 'react-native';
 //Styling
 import styled from 'styled-components';
@@ -13,10 +12,10 @@ const StyledScrollView = styled(ScrollView)<ScrollViewProps>`
 `;
 
 const StyledView = styled(View)<LayoutDefaultProps>`
+  position: relative;
   display: flex;
   height: ${metrics.screenHeight}px;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 `;
 

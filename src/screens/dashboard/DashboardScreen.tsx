@@ -1,11 +1,10 @@
 import React from 'react';
-import {Text} from 'react-native';
 //Styling
-import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 //Components
 import {LayoutDefault} from '../layouts/LayoutDefault';
 import {NavigationHeader} from '../../components/navigation/NavigationHeader';
+import {DashboardContent} from '../../components/dashboard/DashboardContent';
 
 export const DashboardScreen: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ export const DashboardScreen: React.FC = () => {
       scrollViewBackground={theme.colors.pale}
       statusBarBackground={theme.colors.primary}>
       <NavigationHeader background={theme.colors.primary} />
-      <Text>Dashboard</Text>
+      <DashboardContent />
     </LayoutDefault>
   );
 };

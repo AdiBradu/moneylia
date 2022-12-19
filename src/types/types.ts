@@ -48,7 +48,12 @@ interface NavigationHeaderProps {
   background?: string;
 }
 
+interface TextProps {
+  text: string | null;
+}
+
 export type {
+  TextProps,
   NavigationHeaderProps,
   IconProps,
   TabBarIconProps,
