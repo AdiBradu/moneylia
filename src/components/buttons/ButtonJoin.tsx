@@ -1,6 +1,7 @@
 import React from 'react';
 //Styling
 import styled from 'styled-components';
+import {theme} from '../../styles/theme';
 //Components
 import {ButtonDefault} from './ButtonDefault';
 //Navigation
@@ -8,7 +9,6 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 //Types
 import {RootStackParamList} from '../../types/types';
-import {theme} from '../../styles/theme';
 
 const StyledButton = styled(ButtonDefault)`
   display: flex;
