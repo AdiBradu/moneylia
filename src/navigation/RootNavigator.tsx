@@ -1,41 +1,44 @@
 import React from 'react';
 //Navigation
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+//Coponents
+import {LandingScreen} from '../screens/landing/LandingScreen';
+import {PaymentScreen} from '../screens/payment/PaymentScreen';
+import {PaymentDetails} from '../components/payment/PaymentDetails';
 //Types
 import {RootStackParamList} from '../types/types';
-//Components
-import {BottomTabBar} from '../components/navigation/BottomTabBar';
-import {TabBarIcon} from '../components/navigation/TabBarIcon';
-//Utils
-import {ROOT_SCREENS} from '../utils/screens';
+//Navigation
+import {TabNavigator} from './TabNavigator';
 
-const Tab = createBottomTabNavigator<RootStackParamList>();
+const Root = createNativeStackNavigator<RootStackParamList>();
 
-export const RootNavigator: React.FC = () => {
+export const RootNavigator = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Dashboard"
-      screenOptions={{
-        tabBarStyle: {
-          height: 69,
-          paddingBottom: 16,
-          paddingTop: 0,
-          justifyContent: 'space-evenly',
-        },
-        headerShown: false,
-      }}
-      tabBar={props => <BottomTabBar {...props} />}>
-      {ROOT_SCREENS.map((item, index) => (
-        <Tab.Screen
-          key={index}
-          name={item.name}
-          options={() => ({
-            tabBarIcon: ({color}) => <TabBarIcon color={color} />,
-            tabBarLabel: item.name,
-          })}>
-          {item.component}
-        </Tab.Screen>
-      ))}
-    </Tab.Navigator>
+    <Root.Navigator initialRouteName="Login">
+      <Root.Screen
+        name="Login"
+        component={LandingScreen}
+        options={{headerShown: false}}
+      />
+      <Root.Screen
+        name="Tab"
+        component={TabNavigator}
+        options={{headerShown: false}}
+      />
+      <Root.Screen
+        name="Payment"
+        component={PaymentScreen}
+        options={({navigation}) => ({
+          headerShown: true,
+          title: 'Payment details',
+          header: props => (
+            <PaymentDetails
+              {...props}
+              onPress={() => navigation.goBack(null)}
+            />
+          ),
+        })}
+      />
+    </Root.Navigator>
   );
 };

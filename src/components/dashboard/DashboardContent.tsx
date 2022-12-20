@@ -10,30 +10,26 @@ import {DashboardContributions} from './contributions/DashboardContributions';
 
 const StyledView = styled(View)`
   position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-const StyledContaner = styled(View)`
+const StyledContainer = styled(View)`
   position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 16px 16px 16px;
 `;
 
 export const DashboardContent = () => {
   return (
     <StyledView>
       <DashboardTopLayer />
-      <StyledContaner>
+      <StyledContainer>
         <DashboardGreeting />
         <DashboardSummary />
         <DashboardContributions />
-      </StyledContaner>
+      </StyledContainer>
     </StyledView>
   );
 };

@@ -11,5 +11,6 @@ export const theme = {
     copy: '#6F6D7B',
     error: '#F83E5A',
     pagopa: '#BF7EE6',
+    divider: '#eaeaec',
   },
 };

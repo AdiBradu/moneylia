@@ -7,7 +7,8 @@ import {ButtonDefault} from './ButtonDefault';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 //Types
-import {LandingStackParamList} from '../../types/types';
+import {RootStackParamList} from '../../types/types';
+import {theme} from '../../styles/theme';
 
 const StyledButton = styled(ButtonDefault)`
   display: flex;
@@ -17,17 +18,16 @@ const StyledButton = styled(ButtonDefault)`
   padding: 16px 20px;
   width: 260px;
   height: 50px;
-  background: #7476ed;
+  background: ${theme.colors.primary};
   border-radius: 4px;
   margin-top: 60px;
 `;
 
 export const ButtonJoin: React.FC = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<LandingStackParamList>>();
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const handlePress = () => {
-    console.log('pressed');
-    navigation.navigate('Root');
+    navigation.navigate('Tab');
   };
 
   return <StyledButton onPress={handlePress} text="Join for free" />;

@@ -9,33 +9,42 @@ import {ExtractIcon} from '../assets/icons/ExtractIcon';
 import {PagoPAIcon} from '../assets/icons/PagoPAIcon';
 import {ProfieIcon} from '../assets/icons/ProfieIcon';
 //Types
-import {RootStackParamList} from '../types/types';
+import {TabStackParamList} from '../types/types';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 interface ROOT_SCREENS_PROPS {
-  name: keyof RootStackParamList;
-  component: () => JSX.Element;
+  name: keyof TabStackParamList;
+  component: (props: any) => JSX.Element;
   icon: JSX.Element;
 }
 
 export const ROOT_SCREENS: ROOT_SCREENS_PROPS[] = [
   {
     name: 'Dashboard',
-    component: () => <DashboardScreen />,
+    component: (
+      props: NativeStackScreenProps<TabStackParamList, 'Dashboard'>,
+    ) => <DashboardScreen {...props} />,
     icon: <DashboarIcon />,
   },
   {
     name: 'Extract',
-    component: () => <ExtractScreen />,
+    component: (
+      props: NativeStackScreenProps<TabStackParamList, 'Extract'>,
+    ) => <ExtractScreen {...props} />,
     icon: <ExtractIcon />,
   },
   {
     name: 'PagoPA',
-    component: () => <PagopaScreen />,
+    component: (props: NativeStackScreenProps<TabStackParamList, 'PagoPA'>) => (
+      <PagopaScreen {...props} />
+    ),
     icon: <PagoPAIcon />,
   },
   {
     name: 'Profile',
-    component: () => <ProfileScreen />,
+    component: (
+      props: NativeStackScreenProps<TabStackParamList, 'Profile'>,
+    ) => <ProfileScreen {...props} />,
     icon: <ProfieIcon />,
   },
 ];

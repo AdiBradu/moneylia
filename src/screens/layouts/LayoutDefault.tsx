@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, View, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 //Styling
 import styled from 'styled-components';
 //Utils
@@ -8,30 +8,27 @@ import metrics from '../../utils/metrics';
 import {LayoutDefaultProps, ScrollViewProps} from '../../types/types';
 
 const StyledScrollView = styled(ScrollView)<ScrollViewProps>`
-  background-color: ${props => props.scrollViewBackground};
+  background-color: ${props => props.background};
+  position: relative;
+  height: ${metrics.screenHeight}px;
 `;
 
 const StyledView = styled(View)<LayoutDefaultProps>`
   position: relative;
   display: flex;
-  height: ${metrics.screenHeight}px;
   flex-direction: column;
-  align-items: center;
+  padding-bottom: 93px;
 `;
 
 export const LayoutDefault: React.FC<LayoutDefaultProps> = ({
   children,
-  statusBarBackground,
-  scrollViewBackground,
+  background,
 }) => {
   return (
-    <SafeAreaView>
-      <StatusBar backgroundColor={statusBarBackground} />
-      <StyledScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        scrollViewBackground={scrollViewBackground}>
-        <StyledView>{children}</StyledView>
-      </StyledScrollView>
-    </SafeAreaView>
+    <StyledScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      background={background}>
+      <StyledView>{children}</StyledView>
+    </StyledScrollView>
   );
 };

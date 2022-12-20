@@ -7,7 +7,10 @@ import {ThemeProvider} from 'styled-components';
 import {theme} from './src/styles/theme';
 //Navigation
 import {NavigationContainer} from '@react-navigation/native';
-import {LandingNavigator} from './src//navigation/LandingNavigator';
+import {RootNavigator} from './src/navigation/RootNavigator';
+//Redux
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -17,11 +20,13 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <LandingNavigator />
-      </NavigationContainer>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
+    </Provider>
   );
 };
 

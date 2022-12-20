@@ -1,13 +1,17 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 //Components
 import {TabBarIcon} from '../navigation/TabBarIcon';
+import {TabBarLabel} from './TabBarLabel';
 //Styling
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 //Types
 import type {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import type {StyledLabelProps, StyledBarProps} from '../../types/types';
+import type {StyledBarProps} from '../../types/types';
+//Redux
+import {useAppDispatch} from '../../redux/hooks/hooks';
+import {fetchPayments} from '../../redux/features/payments/paymentsSlice';
 
 const StyledContainer = styled(View)`
   display: flex;
@@ -39,34 +43,25 @@ const StyledBar = styled(View)<StyledBarProps>`
     props.isFocused ? theme.colors.primary : '#fff'};
 `;
 
-const StyledText = styled(Text)<StyledLabelProps>`
-  font-family: 'Rubik-Regular';
-  font-size: 11px;
-  line-height: 13.2px;
-  color: ${props =>
-    props.isFocused ? theme.colors.primary : theme.colors.copy};
-`;
-
 export const BottomTabBar: React.FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
 }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <StyledContainer>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-
         const isFocused = state.index === index;
 
         const onPress = () => {
+          if (route.name === 'PagoPA') {
+            dispatch(fetchPayments());
+          }
+
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
@@ -74,8 +69,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            // The `merge: true` option makes sure that the params inside the tab screen are preserved
-            navigation.navigate({name: route.name, merge: true});
+            navigation.navigate(route.name, {merge: true});
           }
         };
 
@@ -100,7 +94,10 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({
               color={isFocused ? theme.colors.primary : theme.colors.lightGrey}
               route={route.name}
             />
-            <StyledText isFocused={isFocused}>{label}</StyledText>
+            <TabBarLabel
+              color={isFocused ? theme.colors.primary : theme.colors.lightGrey}
+              route={route.name}
+            />
           </StyledTouchableOpacity>
         );
       })}
