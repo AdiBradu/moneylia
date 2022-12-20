@@ -8,10 +8,12 @@ import {ItemValue} from '../ItemValue';
 
 interface ContainerProps {
   width: string;
+  paddingLeft: string;
 }
 
 interface SummaryItemProps {
   width: string;
+  paddingLeft: string;
   itemKey: string;
   itemValue: string;
 }
@@ -21,15 +23,17 @@ const StyledView = styled(View)<ContainerProps>`
   flex-direction: column;
   width: ${props => props.width};
   margin-top: 16px;
+  padding-left: ${props => props.paddingLeft};
 `;
 
 export const SummaryItem: React.FC<SummaryItemProps> = ({
+  paddingLeft,
   width,
   itemKey,
   itemValue,
 }) => {
   return (
-    <StyledView width={width}>
+    <StyledView width={width} paddingLeft={paddingLeft}>
       <ItemKey text={itemKey} />
       <ItemValue text={itemValue} />
     </StyledView>

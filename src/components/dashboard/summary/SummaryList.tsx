@@ -21,6 +21,11 @@ export const SummaryList: React.FC = () => {
         <SummaryItem
           key={item.id}
           width={item.id === '4' || item.id === '5' ? '25%' : '50%'}
+          paddingLeft={
+            item.id === '2' || item.id === '4' || item.id === '5'
+              ? '12px'
+              : '0px'
+          }
           itemKey={item.key}
           itemValue={item.value}
         />
